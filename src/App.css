@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+:root{
+  --main-font: AppleGothic;
+  --main-green: rgba(0, 177, 59, 0.541);
+  --add-btn:rgba(0, 177, 59, 0.527);
+  --delete-btn: rgba(224, 32, 32, 0.479);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root, html{
+  background-color: rgba(107, 122, 143, 0.164);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* JUMBOTRON */
+.jumbotron-fluid{
+  background-color: var(--main-green)!important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.container h1,
+.container p{
+  color: white;
+  font-family: var(--main-font);
+}
+.addBtn,
+.deleteBtn{
+  background-color: var(--add-btn);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  font-size: 1em;
+  border-color: transparent;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.deleteBtn{
+  background-color: var(--delete-btn);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modalHeader{
+  background-color: var(--main-green);
+  color: white;
+  font-family: var(--main-font);
+}
+ul li{
+  list-style: none;
 }
