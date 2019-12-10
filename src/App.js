@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Jumbotron  from './components/Jumbotron';
+import TotalMoney from './components/TotalMoney';
 import Income  from './components/Income';
 import Savings from './components/Savings';
 import AddModal from './components/Modal';
+
 
 
 class App extends Component{
@@ -19,6 +21,8 @@ class App extends Component{
       amount: 0,
       income: [],
       savings: [],
+      totalMoneyIncome:[],
+      totalMoneySavings:[]
     }
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -53,20 +57,28 @@ class App extends Component{
     e.preventDefault();
     let number = Number(this.state.amount)
     let obj = {'name': this.state.inputValue, 'amount': number, 'id':this.state.inputValue}
+    
     if(this.state.selectValue === 'income'){
       this.setState({
         income: [...this.state.income, obj],
-        isModalOpen : false
+        isModalOpen : false,
+        totalMoneyIncome: [...this.state.totalMoneyIncome, number]
       })
     }
     else if(this.state.selectValue === 'savings'){
       this.setState({
         savings: [...this.state.savings, obj],
-        isModalOpen : false
+        isModalOpen : false,
+        totalMoneySavings: [...this.state.totalMoneySavings, number]
       })
     }
-   
+
+
+    
+
   }
+
+
 
 
 
@@ -74,6 +86,10 @@ class App extends Component{
     return(
       <div>
         <Jumbotron />
+        <TotalMoney 
+          totalMoneyIncome={this.state.totalMoneyIncome}
+          totalMoneySavings={this.state.totalMoneySavings}
+          />
         <Income 
           modal={this.toggleModal}
           income={this.state.income}
