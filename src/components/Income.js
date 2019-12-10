@@ -1,5 +1,26 @@
 import React from 'react';
 
+function MapIncome({income}){
+    return(
+        income.map(item =>{
+            return(
+                <div key={item.id} className="d-flex justify-content-between">
+                    <h5>{item.name}</h5>
+                    <h5>{item.amount}</h5>
+                </div>
+            )
+        })
+    );
+}
+
+function ReduceIncome({income}){
+    return(
+        <h5>${income.reduce(function(prev, next){
+            return prev + next.amount}, 0)}
+        </h5>
+    );
+}
+
 
 
 function Income(props){
@@ -9,17 +30,12 @@ function Income(props){
             <h3>Income</h3>
             <button className="addBtn" onClick={props.modal}>+</button>
         </div>
-        <div>
         <div className="card-body">
-        {props.income.map(item =>{
-            return(
-                <div className="d-flex justify-content-between">
-                <h5>{item.name}</h5>
-                <h5>{item.amount}</h5>
-                </div>
-            )
-        })}          
+            <MapIncome income={props.income}/>
         </div>
+        <div className="card-footer d-flex justify-content-between">
+            <h3>Total</h3>
+            <ReduceIncome income={props.income}/>
         </div>
     </div>
     )

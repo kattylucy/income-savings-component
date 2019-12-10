@@ -17,10 +17,8 @@ class App extends Component{
       inputValue:'',
       selectValue:'',
       amount: 0,
-      income: [{
-      }],
-      savings: [{
-      }],
+      income: [],
+      savings: [],
     }
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -53,7 +51,8 @@ class App extends Component{
 
   addItems = (e) =>{
     e.preventDefault();
-    let obj = {'name': this.state.inputValue, 'amount': this.state.amount}
+    let number = Number(this.state.amount)
+    let obj = {'name': this.state.inputValue, 'amount': number, 'id':this.state.inputValue}
     if(this.state.selectValue === 'income'){
       this.setState({
         income: [...this.state.income, obj],
