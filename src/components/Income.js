@@ -1,12 +1,15 @@
 import React from 'react';
 
-function MapIncome({income}){
+function MapIncome({income, deleting}){
     return(
-        income.map(item =>{
+        income.map((item, index) =>{
             return(
                 <div key={item.id} className="d-flex justify-content-between">
-                    <h5>{item.name}</h5>
-                    <h5>{item.amount}</h5>
+                    <div className="d-flex">
+                        <button className="deleteBtn" onClick={() => deleting(index)}>X</button>
+                        <h5 className="ml-3 mt-1">{item.name}</h5>
+                    </div>
+                    <h5>${item.amount}</h5>
                 </div>
             )
         })
@@ -31,7 +34,7 @@ function Income(props){
             <button className="addBtn" onClick={props.modal}>+</button>
         </div>
         <div className="card-body">
-            <MapIncome income={props.income}/>
+            <MapIncome income={props.income} deleting={props.deleting}/>
         </div>
         <div className="card-footer d-flex justify-content-between">
             <h3>Total</h3>

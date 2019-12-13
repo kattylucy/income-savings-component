@@ -21,8 +21,6 @@ class App extends Component{
       amount: 0,
       income: [],
       savings: [],
-      totalMoneyIncome:[],
-      totalMoneySavings:[]
     }
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -62,20 +60,30 @@ class App extends Component{
       this.setState({
         income: [...this.state.income, obj],
         isModalOpen : false,
-        totalMoneyIncome: [...this.state.totalMoneyIncome, number]
       })
     }
     else if(this.state.selectValue === 'savings'){
       this.setState({
         savings: [...this.state.savings, obj],
         isModalOpen : false,
-        totalMoneySavings: [...this.state.totalMoneySavings, number]
       })
     }
+  }
 
+  deleteElementIncome = (id) => {
+    const deletingIncome = [...this.state.income];
+    deletingIncome.splice(id, 1);
+    this.setState({
+      income:deletingIncome
+    })
+  }
 
-    
-
+  deleteElementSavings = (id) => {
+    const deletingSavings=[...this.state.savings];    
+    deletingSavings.splice(id,1);
+    this.setState({
+      savings:deletingSavings
+    })
   }
 
 
@@ -87,16 +95,19 @@ class App extends Component{
       <div>
         <Jumbotron />
         <TotalMoney 
-          totalMoneyIncome={this.state.totalMoneyIncome}
-          totalMoneySavings={this.state.totalMoneySavings}
-          />
+          income={this.state.income}
+          savings={this.state.savings}
+          userName={this.props.userName}
+        />
         <Income 
           modal={this.toggleModal}
           income={this.state.income}
+          deleting={this.deleteElementIncome}
         />
         <Savings
           modal={this.toggleModal}
           savings={this.state.savings}
+          deleting={this.deleteElementSavings}
         />
         
 

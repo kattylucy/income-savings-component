@@ -1,27 +1,31 @@
 import React from 'react';
+import { Link} from 'react-router-dom';
 
-function ReduceArrays({totalMoneyIncome, totalMoneySavings}){
-    const income = totalMoneyIncome.reduce((prev, next) => {
-        return(
-            prev + next)} , 0
-    );
 
-    const savings = totalMoneySavings.reduce((prev, next)=>{
-        return(
-            prev + next)}, 0
-    );
+function ReduceArrays({income,savings}){
+    const incomeReduce = income.reduce(function(prev, next){
+        return prev + next.amount;
+        }, 0)
+
+    const savingsReduce = savings.reduce(function(prev,next){
+        return prev + next.amount;
+    },0)
 
     return(
-        <h5>{income - savings}</h5>
+        <h5>${incomeReduce - savingsReduce}</h5>
     )
-
 }
+
+
 
 function TotalMoney(props){
     return(
-        <div className="text-center mb-5">
-            <h1>Cash Avaliable</h1>
-            <ReduceArrays totalMoneyIncome={props.totalMoneyIncome} totalMoneySavings={props.totalMoneySavings}/>
+        <div className="row mb-5">
+            <p className="col-3 ml-5"><Link to="/">Exit</Link></p>
+            <div className="text-center col-5">
+                <p>Welcome! <b>{props.userName}</b> today's cash</p>
+                <ReduceArrays income={props.income} savings={props.savings}/>
+            </div>
         </div>
     )
 
