@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
 
 
+
 function AddModal(props){
     return(
         <Modal isOpen={props.open} toggle={props.openEvent}>
@@ -10,7 +11,11 @@ function AddModal(props){
             <form>
                 <div className="form-group">
                     <label htmlFor="name">Name Item</label>
-                    <input type="text" id="name" className="form-control" placeholder="e.g. Salary" onChange={props.getInputValue}/>
+                    <input type="text" id="name" className="form-control" placeholder="e.g. Salary" 
+                    onChange={props.getInputValue}
+                    onBlur={props.handleBlur}
+                    invalid={props.errors}
+                    />
                 </div>
                 <div>
                     <label htmlFor="amount" className="form-label">Amount</label>
@@ -30,7 +35,7 @@ function AddModal(props){
           
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={props.addItems}>Save</Button>{' '}
+          <Button color="primary" onClick={props.addItems} disabled={!props.button}>Save</Button>{' '}
           <Button color="secondary" onClick={props.openEvent}>Cancel</Button>
         </ModalFooter>
 

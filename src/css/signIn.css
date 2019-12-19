@@ -1,0 +1,23 @@
+.sign-in-left img{
+    display: none;
+}
+.signinpage{
+    background-color:  rgba(216, 216, 216, 0.308);
+    height: 100vh;
+}
+.signinlogo a{
+    color:  rgba(7, 135, 155, 0.767);
+    font-family: "Arial Rounded MT Bold";
+}
+
+@media only screen and (min-width: 600px) {
+    .sign-in-left img{
+        display: block;
+        width: 100%;
+        background-color:  rgba(7, 135, 155, 0.767);
+        height: 100vh
+    }
+    .sign-in-right{
+        margin-top: 15%;
+    }
+  }

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import App from './App'
-import { BrowserRouter , Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Home from './components/Home';
+import App from './App'
+import { BrowserRouter , Switch, Route, Redirect } from 'react-router-dom';
+import SignIn from './components/SignIn';
 
 
 
@@ -24,9 +25,10 @@ class Root extends Component{
             <div>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/home" render={()=> <Home userName={this.state.userName} event={this.getUserName}/>}/>
-                        <Route path="/App" render={()=> <App userName={this.state.userName}/>} />
-                        <Redirect to="/home"/> 
+                        <Route path="/Home" component={Home}/>
+                        <Route path="/SignIn" component={SignIn} />
+                        <Route path="/App" component={App} />
+                        <Redirect to="/Home"/> 
                     </Switch>
                 </BrowserRouter>
             </div>

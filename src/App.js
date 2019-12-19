@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-
+import '../src/css/App.css';
 import Jumbotron  from './components/Jumbotron';
 import TotalMoney from './components/TotalMoney';
 import Income  from './components/Income';
@@ -21,10 +20,21 @@ class App extends Component{
       amount: 0,
       income: [],
       savings: [],
+      touched:{
+        inputValue: false
+      },
+      button: ''
     }
 
     this.toggleModal = this.toggleModal.bind(this);
+  }
 
+  handleBlur = () => {
+    this.setState({
+      touched:{
+        inputValue: true
+      }
+    })
   }
 
   toggleModal(){
@@ -35,7 +45,8 @@ class App extends Component{
 
   getInputValue = (e) => {
     this.setState({
-      inputValue: e.target.value
+      inputValue: e.target.value,
+      button: e.target.value
     })
   }
 
@@ -89,7 +100,6 @@ class App extends Component{
 
 
 
-
   render(){
     return(
       <div>
@@ -110,8 +120,6 @@ class App extends Component{
           deleting={this.deleteElementSavings}
         />
         
-
-
         <AddModal 
           open={this.state.isModalOpen} 
           openEvent={this.toggleModal}
@@ -119,6 +127,9 @@ class App extends Component{
           getAmountValue={this.getAmountValue}
           getSelectValue={this.getSelectValue}
           addItems={this.addItems}
+          handleBlur={this.handleBlur}
+          touched={this.state.touched.inputValue}
+          button={this.state.button}
           />
 
         

@@ -4,13 +4,9 @@
   --add-btn:rgba(0, 177, 59, 0.527);
   --delete-btn: rgba(224, 32, 32, 0.479);
 }
-#root, html{
-  background-color: rgba(107, 122, 143, 0.164);
-}
+
 /* JUMBOTRON */
-.jumbotron-fluid{
-  background-color: var(--main-green)!important;
-}
+
 .container h1,
 .container p{
   color: white;
@@ -62,3 +58,8 @@ ul li{
 .link:hover{
   text-decoration: none;
 }
+
+
+
+
+
